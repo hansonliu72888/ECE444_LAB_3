@@ -40,7 +40,8 @@ app.config.from_object(__name__)
 db = SQLAlchemy(app)
 
 from project import models
-
+with app.app_context():
+    db.create_all()
 
 def login_required(f):
     @wraps(f)
